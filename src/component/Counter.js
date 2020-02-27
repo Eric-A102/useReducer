@@ -27,51 +27,60 @@ export default function Counter() {
   };
 
   const handleSubmit = e => {
-    console.log(e);
     e.preventDefault();
     dispatch({
       type: "getName",
       fullName: [...fullNames, firstName + " " + lastName]
     });
   };
-
-  console.log(fullNames);
   return (
     <>
-      <form
-        className={classes.root}
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit}
-      >
-        <TextField
-          id="outlined-basic"
-          label="Type Text"
-          variant="outlined"
-          name="firstName"
-          onChange={handleChange}
-          value={firstName}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Type Text"
-          variant="outlined"
-          name="lastName"
-          onChange={handleChange}
-          value={lastName}
-        />
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-      </form>
-      <div className={classes.demo}>
-        <List dense={dense}>
-          {fullNames.map((data, i) => (
-            <ListItem key={i}>
-              <ListItemText primary={data} />
-            </ListItem>
-          ))}
-        </List>
+      <div>
+        <form
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <TextField
+              id="outlined-basic"
+              label="First Name"
+              variant="outlined"
+              name="firstName"
+              onChange={handleChange}
+              value={firstName}
+            />
+
+            <TextField
+              style={{ marginTop: 10, marginBottom: 10 }}
+              id="outlined-basic"
+              label="Last Name"
+              variant="outlined"
+              name="lastName"
+              onChange={handleChange}
+              value={lastName}
+            />
+            <Button variant="contained" color="primary" type="submit">
+              Submit
+            </Button>
+          </div>
+        </form>
+        <div className={classes.demo}>
+          <List dense={dense}>
+            {fullNames.map((data, i) => (
+              <ListItem key={i}>
+                <ListItemText primary={data} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </div>
     </>
   );
