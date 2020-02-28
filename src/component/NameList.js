@@ -20,7 +20,7 @@ export default function Counter() {
 
   const handleChange = e => {
     dispatch({
-      type: "form",
+      type: "form1",
       field: e.target.name,
       value: e.target.value
     });
@@ -29,14 +29,22 @@ export default function Counter() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({
-      type: "getName",
+      type: "getName1",
       fullName: [...fullNames, firstName + " " + lastName]
     });
   };
   return (
     <>
-      <div>
+      <h3>List</h3>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column"
+        }}
+      >
         <form
+          style={{ marginLeft: "44.5%" }}
           className={classes.root}
           noValidate
           autoComplete="off"
@@ -45,8 +53,7 @@ export default function Counter() {
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              alignItems: "center"
+              flexDirection: "column"
             }}
           >
             <TextField
@@ -72,7 +79,7 @@ export default function Counter() {
             </Button>
           </div>
         </form>
-        <div className={classes.demo}>
+        <div className={classes.demo} style={{ marginLeft: "47%" }}>
           <List dense={dense}>
             {fullNames.map((data, i) => (
               <ListItem key={i}>
